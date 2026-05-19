@@ -12,9 +12,6 @@ export default function Navbar() {
 
       {user ? (
         <nav className="nav-links">
-          <span className="role-badge">
-            Role: {user.role === "admin" ? "Admin" : "User"}
-          </span>
           <NavLink to="/">Dashboard</NavLink>
           <NavLink to="/register-complaint">Register Complaint</NavLink>
           <NavLink to="/status-updates">Status Updates</NavLink>

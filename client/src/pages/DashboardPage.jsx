@@ -26,10 +26,6 @@ export default function DashboardPage() {
         </div>
         <div className="hero-metrics">
           <div className="metric-card">
-            <strong>JWT Auth</strong>
-            <span>Protected routes for users and admins</span>
-          </div>
-          <div className="metric-card">
             <strong>AI Analysis</strong>
             <span>Priority, summary, response, department suggestion</span>
           </div>
