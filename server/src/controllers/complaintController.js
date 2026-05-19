@@ -69,8 +69,8 @@ const updateComplaintStatus = async (req, res, next) => {
       return res.status(404).json({ message: "Complaint not found" });
     }
 
-    if (req.user.role !== "admin" && complaint.createdBy.toString() !== req.user._id.toString()) {
-      return res.status(403).json({ message: "Forbidden. Cannot update this complaint." });
+    if (req.user.role !== "admin") {
+      return res.status(403).json({ message: "Only admin can update complaint status." });
     }
 
     complaint.status = req.body.status || complaint.status;
@@ -93,8 +93,8 @@ const deleteComplaint = async (req, res, next) => {
       return res.status(404).json({ message: "Complaint not found" });
     }
 
-    if (req.user.role !== "admin" && complaint.createdBy.toString() !== req.user._id.toString()) {
-      return res.status(403).json({ message: "Forbidden. Cannot delete this complaint." });
+    if (req.user.role !== "admin") {
+      return res.status(403).json({ message: "Only admin can delete complaints." });
     }
 
     await complaint.deleteOne();

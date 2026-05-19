@@ -56,12 +56,7 @@ export default function ComplaintList({ statusOnly = false }) {
     }
   };
 
-  const canDeleteComplaint = (complaint) => {
-    const ownerId =
-      typeof complaint.createdBy === "string" ? complaint.createdBy : complaint.createdBy?._id;
-
-    return user?.role === "admin" || ownerId === user?.id;
-  };
+  const isAdmin = user?.role === "admin";
 
   return (
     <section className="page-shell">
@@ -119,18 +114,22 @@ export default function ComplaintList({ statusOnly = false }) {
             </p>
 
             <div className="status-row">
-              <select
-                value={complaint.status}
-                onChange={(event) => handleStatusUpdate(complaint._id, event.target.value)}
-              >
-                {statusOptions.map((option) => (
-                  <option key={option} value={option}>
-                    {option}
-                  </option>
-                ))}
-              </select>
+              {isAdmin ? (
+                <select
+                  value={complaint.status}
+                  onChange={(event) => handleStatusUpdate(complaint._id, event.target.value)}
+                >
+                  {statusOptions.map((option) => (
+                    <option key={option} value={option}>
+                      {option}
+                    </option>
+                  ))}
+                </select>
+              ) : (
+                <span className="readonly-status">Status: {complaint.status}</span>
+              )}
 
-              {canDeleteComplaint(complaint) && (
+              {isAdmin && (
                 <button
                   className="danger-button"
                   type="button"
