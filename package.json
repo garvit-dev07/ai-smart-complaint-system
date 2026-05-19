@@ -1,0 +1,19 @@
+{
+  "name": "aifsd-ese",
+  "version": "1.0.0",
+  "description": "AI-Based Smart Complaint Management System MERN project",
+  "main": "index.js",
+  "scripts": {
+    "dev": "concurrently \"npm run dev --prefix server\" \"npm run dev --prefix client\"",
+    "build": "npm run build --prefix client",
+    "start": "npm run start --prefix server",
+    "test": "echo \"Manual test cases documented in REPORT.md\""
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "devDependencies": {
+    "concurrently": "^9.2.1"
+  }
+}
